@@ -1,4 +1,4 @@
-const Buttons = ({ userDataFetch, addUserHandler }) => {
+const Buttons = ({ userDataFetch, addUserHandler, resetUserHandler }) => {
   return (
     <div className="btn-group">
       <button onClick={userDataFetch} className="btn" type="button">
@@ -6,6 +6,9 @@ const Buttons = ({ userDataFetch, addUserHandler }) => {
       </button>
       <button onClick={addUserHandler} className="btn" type="button">
         add user
+      </button>
+      <button onClick={resetUserHandler} className="btn" type="button">
+        Clear Users
       </button>
     </div>
   );

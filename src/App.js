@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import cwSvg from "./assets/cw.svg";
 import Footer from "./components/Footer/Footer";
 import ProfileImage from "./components/ProfileImage/ProfileImage";
 import ValueButtons from "./components/ValueButtons/ValueButtons";
@@ -28,9 +27,11 @@ function App() {
   }, []);
 
   const addUserHandler = () => {
-  setUserList([...userList.filter((user)=> (
+  setUserList(
+    [...userList.filter((user)=> (
     user.uuid !== login.uuid
-  )),{
+  )),
+  {
     name: name?.first,
     email: email,
     phone: phone,
@@ -39,16 +40,18 @@ function App() {
   }])
   }
 
+  const resetUserHandler = () => {
+    setUserList([])
+  }
+
   return (
     <main>
-      <div className="block bcg-orange">
-        <img src={cwSvg} alt="cw" id="cw" />
-      </div>
+      <div className="block bcg-orange"></div>
       <div className="block">
         <div className="container">
           <ProfileImage picture={picture}/>
           <ValueButtons userText={userText} setUserText={setUserText} data={data}/>
-          <Buttons addUserHandler={addUserHandler} userDataFetch={userDataFetch}/>
+          <Buttons resetUserHandler={resetUserHandler} addUserHandler={addUserHandler} userDataFetch={userDataFetch}/>
           {userList.length > 0 ? <UserTable userList={userList}/> : null}
         </div>
       </div>
